@@ -7,7 +7,7 @@
       :transform="computedMatrix"
     >
       <Blocks :scale="matrix.a" />
-      <Lines />
+      <Lines :scale="matrix.a" />
     </svg>
   </div>
 </template>
