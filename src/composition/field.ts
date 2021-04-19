@@ -16,6 +16,7 @@ export default function useField() {
     return `matrix(${matrix.a}, ${matrix.b}, ${matrix.c}, ${matrix.d}, ${matrix.x}, ${matrix.y})`;
   });
 
+  /** Сдвиг рабочей области */
   const move = (event: MouseEvent): void => {
     document.ondragstart = () => false;
     document.body.onselectstart = () => false;
@@ -41,10 +42,18 @@ export default function useField() {
     }
   };
 
+  /** Масштабирование рабочей области */
   const zoom = (event: WheelEvent): void => {
-    matrix.a = matrix.a + event.deltaY;
-    matrix.d = matrix.d + event.deltaY;
+    const delta = event.deltaY < 0 ? 0.1 : -0.1;
+    const scale = matrix.a + delta;
+
+    // Ограничение максимального и минимального масштаба
+    if (scale > 2 || scale < 0.1) {
+      return
+    }
+
+    matrix.a = matrix.d = Number(scale.toFixed(1));
   };
 
-  return { computedMatrix, move, zoom };
+  return { matrix, computedMatrix, move, zoom };
 }

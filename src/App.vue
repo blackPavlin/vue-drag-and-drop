@@ -17,8 +17,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-@import "./assets/styles/css/normalize.min.css";
-
 html,
 body {
   width: 100%;

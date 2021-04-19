@@ -1,10 +1,39 @@
-import { reactive, computed } from "vue";
+import { reactive, ref, computed } from "vue";
 
 export interface Block {
+    id: number;
     x: number;
     y: number;
 }
 
-export default function useBlock() {
-    
+interface Props {
+    scale: number;
+}
+
+export default function useBlock(props: Readonly<Props>) {
+    const blocks = ref<Block[]>([{id: 1, x:10, y:10}]);
+
+    const computedTransform = (x: number, y: number): string => {
+        return `translate(${x}, ${y})`;
+    }
+
+    /** Сдвиг блока */
+    const move = (block: Block): void => {
+        document.ondragstart = () => false;
+        document.body.onselectstart = () => false;
+
+        document.body.onmousemove = (e: MouseEvent): void => {
+            block.x = block.x + e.movementX;
+            block.y = block.y + e.movementY;
+          };
+
+        document.body.onmouseup = (): void => {
+            document.ondragstart = null;
+            document.body.onselectstart = null;
+            document.body.onmousemove = null;
+            document.body.onmouseup = null;
+        }
+    }
+
+    return { blocks, computedTransform, move };
 }

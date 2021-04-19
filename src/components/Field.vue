@@ -5,7 +5,7 @@
       @mousedown="move($event)"
       :transform="computedMatrix"
     >
-      <Blocks />
+      <Blocks :scale="matrix.a" />
       <Lines />
     </svg>
   </div>
@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import useField from "@/composition/field.ts";
+import useField from "@/composition/field";
 import Blocks from "@/components/Blocks.vue";
 import Lines from "@/components/Lines.vue";
 
@@ -31,17 +31,6 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
-.field {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border: 1px solid #4fc08d;
-}
-
-.field-svg {
-  width: 1000px;
-  height: 1000px;
-  background: #f6f6f6;
-}
+<style lang="scss" scoped>
+  @import '@/assets/styles/scss/field.scss';
 </style>
