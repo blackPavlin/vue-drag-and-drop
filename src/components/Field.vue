@@ -1,8 +1,9 @@
 <template>
-  <div class="field" @mousewheel.passive="zoom($event)">
+  <div class="field">
     <svg
       class="field-svg"
       @mousedown="move($event)"
+      @mousewheel.passive="zoom($event)"
       :transform="computedMatrix"
     >
       <Blocks :scale="matrix.a" />

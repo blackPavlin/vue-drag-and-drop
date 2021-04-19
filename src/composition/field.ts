@@ -47,12 +47,20 @@ export default function useField() {
     const delta = event.deltaY < 0 ? 0.1 : -0.1;
     const scale = matrix.a + delta;
 
-    // Ограничение максимального и минимального масштаба
     if (scale > 2 || scale < 0.1) {
       return
     }
 
-    matrix.a = matrix.d = Number(scale.toFixed(1));
+    const directionX = event.offsetX - (<HTMLElement>event.target).clientWidth / 2;
+    const directionY = event.offsetY - (<HTMLElement>event.target).clientHeight / 2;
+
+    const offsetX = directionX < 0 ? -event.offsetX : 0;
+    const offsetY = directionY < 0 ? -event.offsetY : 0;
+
+    matrix.a = Number(scale.toFixed(1));
+    matrix.d = Number(scale.toFixed(1))
+    // matrix.x = matrix.x + offsetX / matrix.a;
+    // matrix.y = matrix.y + offsetY / matrix.a;
   };
 
   return { matrix, computedMatrix, move, zoom };
