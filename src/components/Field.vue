@@ -28,10 +28,10 @@ export default defineComponent({
     return {
       ...useField(),
     };
-  }
+  },
 });
 </script>
 
 <style lang="scss" scoped>
-  @import '@/assets/styles/scss/field.scss';
+@import "@/assets/styles/scss/field.scss";
 </style>

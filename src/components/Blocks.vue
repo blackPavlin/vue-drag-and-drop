@@ -22,7 +22,7 @@ export default defineComponent({
     scale: {
       type: Number,
       required: true,
-    }
+    },
   },
   setup(props) {
     return {
@@ -33,5 +33,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-  @import '@/assets/styles/scss/block.scss';
+@import "@/assets/styles/scss/block.scss";
 </style>

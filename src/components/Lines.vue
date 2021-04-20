@@ -1,10 +1,6 @@
 <template>
   <g class="lines">
-    <g
-      class="line"
-      v-for="line in lines"
-      :key="line.id"
-    >
+    <g class="line" v-for="line in lines" :key="line.id">
       <path :d="computedPath(line.points)" />
     </g>
   </g>
@@ -20,9 +16,9 @@ export default defineComponent({
     scale: {
       type: Number,
       required: true,
-    }
+    },
   },
-  setup (props) {
+  setup(props) {
     return {
       ...useLine(props),
     };

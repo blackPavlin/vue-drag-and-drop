@@ -11,8 +11,8 @@ import Field from "@/components/Field.vue";
 export default defineComponent({
   name: "App",
   components: {
-    Field
-  }
+    Field,
+  },
 });
 </script>
 
