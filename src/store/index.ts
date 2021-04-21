@@ -1,19 +1,16 @@
 import { createStore, createLogger } from "vuex";
-import block, { BlockState, BlockStore } from "@/store/modules/block";
-import line, { LineState, LineStore } from "@/store/modules/line";
+import block from "@/store/modules/block";
+import line from "@/store/modules/line";
+import { RootState, Store } from "@/store/types";
 
-export type RootState = {
-  block: BlockState;
-  line: LineState;
-};
-
-export type Store = BlockStore<Pick<RootState, "block">> &
-  LineStore<Pick<RootState, "line">>;
-
-export default createStore({
+export const store = createStore<RootState>({
   plugins: process.env.NODE_ENV === "development" ? [createLogger()] : [],
   modules: {
     block,
     line,
   },
 });
+
+export function useStore(): Store {
+  return store as Store;
+}

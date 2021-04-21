@@ -4,7 +4,7 @@ import { ActionTree } from "vuex";
 import { LineState } from "@/store/modules/line/state";
 
 // TODO: Вынести
-import { RootState } from "@/store";
+import { RootState } from "@/store/types";
 
 export type LineActionT = {};
 

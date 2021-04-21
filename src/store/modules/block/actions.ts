@@ -4,11 +4,11 @@ import { ActionTree } from "vuex";
 import { BlockState } from "@/store/modules/block/state";
 
 // TODO: Вынести
-import { RootState } from "@/store";
+import { RootState } from "@/store/types";
 
 export type BlockActionT = {};
 
-enum BlockActionE {}
+export enum BlockActionE {}
 
 const actions: ActionTree<BlockState, RootState> & BlockActionT = {};
 

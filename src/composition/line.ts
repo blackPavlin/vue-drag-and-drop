@@ -2,22 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { ref } from "vue";
-
-export interface Line {
-  id: number;
-  points: Points;
-}
-
-export interface Points {
-  x1: number;
-  y1: number;
-  x2: number;
-  y2: number;
-  x3: number;
-  y3: number;
-  x4: number;
-  y4: number;
-}
+import { Line, Points } from "@/models/Line";
 
 interface Props {
   scale: number;

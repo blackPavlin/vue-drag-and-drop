@@ -4,12 +4,12 @@ import { GetterTree } from "vuex";
 import { LineState } from "@/store/modules/line/state";
 
 // TODO: Вынести
-import { RootState } from "@/store";
+import { RootState } from "@/store/types";
 
 export type LineGetterT = {};
 
-enum LineGetterE {}
+export enum LineGetterE {}
 
-const getters: GetterTree<LineState, RootState> = {};
+const getters: GetterTree<LineState, RootState> & LineGetterT = {};
 
 export default getters;

@@ -1,12 +1,14 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
+import { Block } from "@/models/Block";
+
 export interface BlockState {
   blocks: Block[];
 }
 
-export interface Block {}
-
 const state: BlockState = {
-  blocks: [],
+  blocks: [
+    { id: "1", x: 10, y: 10 },
+    { id: "2", x: 10, y: 10 },
+  ],
 };
 
 export default state;

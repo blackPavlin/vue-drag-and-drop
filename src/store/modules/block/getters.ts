@@ -1,15 +1,20 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/ban-types */
 import { GetterTree } from "vuex";
 import { BlockState } from "@/store/modules/block/state";
+import { Block } from "@/models/Block";
 
 // TODO: Вынести
-import { RootState } from "@/store";
+import { RootState } from "@/store/types";
 
-export type BlockGetterT = {};
+export type BlockGetterT = {
+  [BlockGetterE.getBlocks](state: BlockState): Block[];
+};
 
-enum BlockGetterE {}
+export enum BlockGetterE {
+  getBlocks = "GET_BLOCKS",
+}
 
-const getters: GetterTree<BlockState, RootState> = {};
+const getters: GetterTree<BlockState, RootState> & BlockGetterT = {
+  [BlockGetterE.getBlocks]: (state): Block[] => state.blocks,
+};
 
 export default getters;

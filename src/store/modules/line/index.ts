@@ -6,7 +6,7 @@ import mutations, { LineMutationT } from "@/store/modules/line/mutations";
 import getters, { LineGetterT } from "@/store/modules/line/getters";
 
 // TODO: Вынести
-import { RootState } from "@/store";
+import { RootState } from "@/store/types";
 
 export type LineStore<S = LineState> = Omit<
   Store<S>,
@@ -39,5 +39,4 @@ const line: Module<LineState, RootState> = {
   getters,
 };
 
-export { LineState };
 export default line;

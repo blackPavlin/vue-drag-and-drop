@@ -6,7 +6,7 @@ import mutations, { BlockMutationT } from "@/store/modules/block/mutations";
 import getters, { BlockGetterT } from "@/store/modules/block/getters";
 
 // TODO: Вынести
-import { RootState } from "@/store";
+import { RootState } from "@/store/types";
 
 export type BlockStore<S = BlockState> = Omit<
   Store<S>,
@@ -39,5 +39,4 @@ const block: Module<BlockState, RootState> = {
   getters,
 };
 
-export { BlockState };
 export default block;

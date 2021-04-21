@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
+import { Line } from "@/models/Line";
+
 export interface LineState {
   lines: Line[];
 }
-
-export interface Line {}
 
 const state: LineState = {
   lines: [],

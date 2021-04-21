@@ -1,12 +1,18 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/ban-types */
 import { MutationTree } from "vuex";
 import { BlockState } from "@/store/modules/block/state";
 
-export type BlockMutationT = {};
+export type BlockMutationT<S = BlockState> = {
+  [BlockMutationE.removeBlock](state: S, blockID: string): void;
+};
 
-enum BlockMutationE {}
+export enum BlockMutationE {
+  removeBlock = "REMOVE_BLOCK",
+}
 
-const mutations: MutationTree<BlockState> & BlockMutationT = {};
+const mutations: MutationTree<BlockState> & BlockMutationT = {
+  [BlockMutationE.removeBlock](state, blockID): void {
+    state.blocks = state.blocks.filter((block) => block.id !== blockID);
+  },
+};
 
 export default mutations;

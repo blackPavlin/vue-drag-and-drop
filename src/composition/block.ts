@@ -1,21 +1,19 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { ref } from "vue";
+import { Block } from "@/models/Block";
 
-export interface Block {
-  id: number;
-  x: number;
-  y: number;
-}
+import { useStore } from "@/store";
+import { BlockGetterE } from "@/store/modules/block/getters";
+import { BlockMutationE } from "@/store/modules/block/mutations";
 
 interface Props {
   scale: number;
 }
 
+const store = useStore();
+
 export default function useBlock(props: Readonly<Props>) {
-  const blocks = ref<Block[]>([
-    { id: 1, x: 10, y: 10 },
-    { id: 2, x: 10, y: 10 },
-  ]);
+  const blocks = ref<Block[]>(store.getters[BlockGetterE.getBlocks]);
 
   const computedTransform = (x: number, y: number): string => {
     return `translate(${x}, ${y})`;
@@ -39,5 +37,15 @@ export default function useBlock(props: Readonly<Props>) {
     };
   };
 
-  return { blocks, computedTransform, move };
+  /** Удаление блока */
+  const remove = (blockID: string): void => {
+    store.commit(BlockMutationE.removeBlock, blockID);
+  };
+
+  return {
+    blocks,
+    computedTransform,
+    move,
+    remove,
+  };
 }
