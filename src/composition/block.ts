@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { ref } from "vue";
+import { computed } from "vue";
 import { Block } from "@/models/Block";
 
 import { useStore } from "@/store";
@@ -10,10 +10,10 @@ interface Props {
   scale: number;
 }
 
-const store = useStore();
-
 export default function useBlock(props: Readonly<Props>) {
-  const blocks = ref<Block[]>(store.getters[BlockGetterE.getBlocks]);
+  const store = useStore();
+
+  const blocks = computed<Block[]>(() => store.getters[BlockGetterE.getBlocks]);
 
   const computedTransform = (x: number, y: number): string => {
     return `translate(${x}, ${y})`;
